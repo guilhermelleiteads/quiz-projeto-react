@@ -116,12 +116,26 @@ export default function App() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
   const [finished, setFinished] = useState(false);
+  const [screen, setScreen] = useState("menu");
 
-  // CORRIGIDO
+  const quizzes = [
+  {
+    id: 1,
+    title: "📚 Quiz CNC Básico",
+    description:
+      "10 questões sobre plano cartesiano, coordenadas e CNC.",
+    questions: questions,
+    },
+
+    
+  ];
+
+  
+
   const selectOption = (optionIndex) => {
     setAnswers((prev) => ({
       ...prev,
-      optionIndex,
+      [currentQuestion]: optionIndex,
     }));
   };
 
@@ -139,6 +153,13 @@ export default function App() {
     }
   };
 
+  const backToMenu = () => {
+  setScreen("menu");
+  setCurrentQuestion(0);
+  setFinished(false);
+  setAnswers({});
+  };
+
   const restartQuiz = () => {
     setStarted(false);
     setCurrentQuestion(0);
@@ -154,6 +175,38 @@ export default function App() {
   const percentage = Math.round(
     (correct / questions.length) * 100
   );
+
+  if (screen === "menu") {
+  return (
+    <div style={styles.container}>
+      <div style={styles.menu}>
+        <h1>🎓 Central de Quizzes</h1>
+
+        <p>Escolha um quiz para iniciar.</p>
+
+        {quizzes.map((quiz) => (
+          <div
+            key={quiz.id}
+            style={styles.quizCard}
+          >
+            <h2>{quiz.title}</h2>
+
+            <p>{quiz.description}</p>
+
+            <button
+              style={styles.primaryButton}
+              onClick={() => {
+                setScreen("quiz");
+              }}
+            >
+              ▶ Iniciar Quiz
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+    );
+  }
 
   if (!started) {
     return (
@@ -231,6 +284,15 @@ export default function App() {
           >
             🔄 Refazer Quiz
           </button>
+
+          <button
+            style={styles.secondaryButton}
+            onClick={backToMenu}
+          >
+            🏠 Voltar ao Menu
+          </button>
+
+
         </div>
       </div>
     );
@@ -375,4 +437,17 @@ const styles = {
     borderRadius: 8,
     cursor: "pointer",
   },
+
+  menu: {
+  width: "100%",
+  maxWidth: "1000px",
+},
+
+quizCard: {
+  background: "#fff",
+  padding: "20px",
+  borderRadius: "12px",
+  marginBottom: "20px",
+  boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+},
 };
