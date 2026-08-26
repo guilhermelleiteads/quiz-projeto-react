@@ -61,9 +61,9 @@ export default function App() {
   return (
     <div style={styles.container}>
       <div style={styles.menu}>
-        <h1>🎓 Central de Quizzes</h1>
+        <h1>🎓 Curso Centro de Usinagem ROMI D800</h1>
 
-        <p>Escolha um quiz para iniciar.</p>
+        <p>📚 Escolha uma Aula.</p>
 
         {quizzes.map((quiz) => (
           <div
@@ -72,7 +72,7 @@ export default function App() {
           >
             <h2>{quiz.title}</h2>
 
-            <p>{quiz.description}</p>
+            <p dangerouslySetInnerHTML={{ __html: quiz.description }} />
 
             <button
               style={styles.primaryButton}
@@ -81,7 +81,7 @@ export default function App() {
                 setScreen("quiz");
               }}
             >
-              ▶ Iniciar Quiz
+              ▶ Iniciar Aula
             </button>
           </div>
         ))}
