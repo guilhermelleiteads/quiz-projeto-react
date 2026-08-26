@@ -1,4 +1,4 @@
-const questions1 = [
+const quiz1 = [
   {
     question:
       "De acordo com o vídeo, quais são os eixos que formam o plano cartesiano nos centros de usinagem?",
@@ -109,4 +109,4 @@ const questions1 = [
   },
 ];
 
-export default questions1;
+export default quiz1;

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import questions1 from "./questions1";
 import quizzes from "./quizzes";
 
 export default function App() {
@@ -10,7 +9,7 @@ export default function App() {
   const [finished, setFinished] = useState(false);
   const [screen, setScreen] = useState("menu");
   const [selectedQuiz, setSelectedQuiz] = useState(null);
-  const quizQuestions = selectedQuiz?.questions || questions1;
+  const quizQuestions = selectedQuiz?.questions || [];
 
   const selectOption = (optionIndex) => {
     setAnswers((prev) => ({
@@ -36,6 +35,7 @@ export default function App() {
   const backToMenu = () => {
   setScreen("menu");
   setSelectedQuiz(null);
+  setStarted(false);
   setCurrentQuestion(0);
   setFinished(false);
   setAnswers({});
@@ -100,8 +100,8 @@ export default function App() {
           <iframe
             width="100%"
             height="315"
-            src={selectedQuiz.video.src}
-            title={selectedQuiz.video.title}
+            src={selectedQuiz.src}
+            title={selectedQuiz.title}
             frameBorder="0"
             allowFullScreen
           />

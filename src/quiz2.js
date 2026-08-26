@@ -1,4 +1,4 @@
-const quizCoordenadas = [
+const quiz2 = [
 
     {
       question:
@@ -112,4 +112,4 @@ const quizCoordenadas = [
     }
   ]
 
-export default quizCoordenadas;
+export default quiz2;
