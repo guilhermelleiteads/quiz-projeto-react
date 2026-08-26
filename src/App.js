@@ -93,10 +93,11 @@ export default function App() {
 
   if (!started) {
     return (
+
       <div style={styles.container}>
+
         <div style={styles.card}>
 
-          
           <iframe
             width="100%"
             height="315"
@@ -110,12 +111,31 @@ export default function App() {
           <h1>{selectedQuiz.title}</h1>
           <p>Teste seus conhecimentos!</p>
 
+          <div 
+            style={{
+    height: "100%",
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center"
+  }}>
+
+          <button
+            style={styles.secondaryButton}
+            onClick={backToMenu}
+          >
+            ⏪ voltar 🏠
+          </button>
+
           <button
             style={styles.primaryButton}
             onClick={() => setStarted(true)}
           >
             🚀 Iniciar Quiz
           </button>
+
+          </div>
+
         </div>
       </div>
     );
@@ -124,6 +144,7 @@ export default function App() {
   if (finished) {
     return (
       <div style={styles.container}>
+
         <div style={styles.card}>
           <h1>🏆 Resultado Final</h1>
 
@@ -173,6 +194,15 @@ export default function App() {
             );
           })}
 
+          <div
+          style={{
+    height: "100%",
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center"
+  }}>
+
           <button
             style={styles.primaryButton}
             onClick={restartQuiz}
@@ -187,6 +217,8 @@ export default function App() {
             🏠 Voltar ao Menu
           </button>
 
+          </div>
+
 
         </div>
       </div>
@@ -199,6 +231,7 @@ export default function App() {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
+
         <h1>📖 Quiz CNC</h1>
 
         <div style={styles.progress}>
@@ -241,13 +274,26 @@ export default function App() {
           )
         )}
 
-        <div style={{ marginTop: 20 }}>
+        <div style={{
+    height: "100%",
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center"
+  }}>
           <button
-            style={styles.secondaryButton}
+            style={styles.primaryButton}
             onClick={previousQuestion}
             disabled={currentQuestion === 0}
           >
             ⬅ Anterior
+          </button>
+
+            <button
+            style={styles.secondaryButton}
+            onClick={backToMenu}
+          >
+            ⏪ voltar 🏠
           </button>
 
           <button
@@ -262,6 +308,7 @@ export default function App() {
               ? "Finalizar ✅"
               : "Próxima ➡"}
           </button>
+
         </div>
       </div>
     </div>
